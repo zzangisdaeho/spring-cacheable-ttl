@@ -1,5 +1,6 @@
 package com.example.springcacheableredisttl.service;
 
+import com.example.springcacheableredisttl.dto.TestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -33,4 +34,11 @@ public class TestService {
     public void EvictNumCache(){
         log.info("cache name : Num  cleared");
     }
+
+    @Cacheable(value = "dto", key = "#name")
+    public Object returnDto(String name){
+        return new TestDto(name, 100);
+    }
+
+
 }

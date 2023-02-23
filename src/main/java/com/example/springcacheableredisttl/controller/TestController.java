@@ -13,7 +13,12 @@ public class TestController {
     private final TestService testService;
 
     @GetMapping("/test/{num}")
-    public Object testCache(@PathVariable int num){
+    public int testCache(@PathVariable int num){
         return testService.addAndReturn(num);
+    }
+
+    @GetMapping("/dto/{name}")
+    public Object testCache(@PathVariable String name){
+        return testService.returnDto(name);
     }
 }
